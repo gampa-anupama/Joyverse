@@ -34,8 +34,8 @@ An **AI-based expression tracker** that:
 (Currrently avaliable)
 - Captures **real-time facial expressions** using the webcam.  
 - Detects emotions such as **happiness, sadness, anger, and fear**.
-(Yet to do)
-- Dynamically adjusts **game difficulty and pace** based on emotions.  
+
+- Dynamically adjusts **game difficulty and pace** based on emotions. (Yet to do) 
 - Provides **emotion analytics** and **therapist insights**.  
 
 ---
@@ -64,3 +64,8 @@ An **AI-based expression tracker** that:
 
 ---
 
+##  Acknowledgement
+
+“True education for dyslexic children happens when we see their potential, not just their mistakes.”
+
+JoyVerse bridges the gap between learning and feeling — combining AI, education, and empathy.
