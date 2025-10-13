@@ -1,7 +1,7 @@
 # 🎮 JoyVerse – Emotion-Aware Learning Platform
 
 **Hackathon:** CBIT VibeathonX 2025  
-**Team:** CannonNova (CBIT DSC)  
+**Team:** CannonNova 
 **Domain:** Health & Education  
 **Project Type:** AI + Web + Emotion Recognition  
 
