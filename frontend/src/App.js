@@ -22,6 +22,8 @@ import VideoUploader from "./components/VideoUploader";
 import VideoPlayer from "./components/VideoPlayer";
 import Facevalidation from './components/FaceDetection';
 import Playgame from './components/play_game_button';
+import ProfilePage from "./components/profile_page";
+import CalendarPage from "./components/calender_page";
 
 const Main = () => {
   const location = useLocation();
@@ -73,6 +75,8 @@ const Main = () => {
           <Route path="/facedetection" element={<UpdatePassword/>}/>
           <Route path="/playgame" element={<Playgame/>}/>
           <Route path="/Facevalidation" element={<Facevalidation/>}/>
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/calendar" element={<CalendarPage />} />
           <Route
             path="/analysis/upload-video"
             element={

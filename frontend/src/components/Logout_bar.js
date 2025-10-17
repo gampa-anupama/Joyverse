@@ -165,6 +165,22 @@ const NavBar = ({ username, profilePicture, handleLogout: externalHandleLogout, 
                                         Upload Video
                                     </Link>
                                 )}
+                                {role === "admin" && (
+                                    <Link
+                                        className="dropdown-item"
+                                        to="/calendar"
+                                    >
+                                        📅 Calendar
+                                    </Link>
+                                )}
+                                {role === "admin" && (
+                                    <Link
+                                        className="dropdown-item"
+                                        to="/profile"
+                                    >
+                                        Profile
+                                    </Link>
+                                )}
                                 <a
                                     className="dropdown-item"
                                     href="#logout"

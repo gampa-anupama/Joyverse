@@ -351,16 +351,33 @@ const Game = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   // Emotion to color mapping
+  // const emotionToColor = (emotion) => {
+  //   const map = {
+  //     happy: [255, 255, 0], // yellow
+  //     sad: [0, 0, 255], // blue
+  //     angry: [255, 0, 0], // red
+  //     surprised: [0, 255, 0], // green
+  //     neutral: [255, 255, 255], // white
+  //   };
+  //   return map[emotion] || [255, 255, 255];
+  // };
   const emotionToColor = (emotion) => {
-    const map = {
-      happy: [255, 255, 0], // yellow
-      sad: [0, 0, 255], // blue
-      angry: [255, 0, 0], // red
-      surprised: [0, 255, 0], // green
-      neutral: [255, 255, 255], // white
-    };
-    return map[emotion] || [255, 255, 255];
+  const map = {
+    happy: [255, 255, 0],       // yellow
+    sad: [0, 0, 255],           // blue
+    angry: [255, 0, 0],         // red
+    fear: [128, 0, 128],        // purple
+    disgust: [0, 128, 0],       // dark green
+    surprise: [0, 255, 255],    // cyan
+    neutral: [255, 255, 255],   // white
+    calm: [173, 216, 230],      // light blue
+    confused: [255, 165, 0],    // orange
   };
+
+  // handle case-insensitivity & similar labels
+  const key = emotion?.toLowerCase().trim();
+  return map[key] || [255, 255, 255];
+};
 
   const lerp = (a, b, t) => a + (b - a) * t;
 
