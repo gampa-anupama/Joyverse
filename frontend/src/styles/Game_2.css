@@ -89,3 +89,11 @@ margin-top: 20px;
 .bounce {
 animation: bounce 0.6s ease;
 }
+.word-container img {
+  width: 150px;      /* fixed width */
+  height: 150px;     /* fixed height */
+  object-fit: contain; /* maintain aspect ratio without cropping */
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  margin-bottom: 20px;
+}

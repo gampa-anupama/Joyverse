@@ -12,38 +12,54 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  padding: 40px 20px;
+  padding: 60px 20px;
 }
 
 .profile-container {
-  max-width: 700px;
+  max-width: 600px;
   width: 100%;
   background: rgba(255, 255, 255, 0.95);
   border-radius: 25px;
-  padding: 30px;
+  padding: 40px 30px;
   box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
 }
 
-/* Title */
+/* Avatar Section */
+.profile-avatar-section {
+  margin-top: -80px;
+  margin-bottom: 20px;
+}
+
+.profile-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 5px solid #2575fc;
+  object-fit: cover;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+
+/* Card title */
 .profile-title {
   text-align: center;
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: #333;
   margin-bottom: 30px;
   font-weight: 600;
 }
 
-/* Card sections */
-.profile-card {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
+/* Profile Info Section */
+.profile-info-section {
+  width: 100%;
+  margin-bottom: 30px;
 }
 
-/* Profile info section */
-.profile-info-section h2,
-.profile-security-section h2 {
-  font-size: 1.5rem;
+.profile-info-section h2 {
+  font-size: 1.4rem;
   color: #333;
   margin-bottom: 15px;
   font-weight: 600;
@@ -52,7 +68,7 @@
 .profile-info .info-item {
   display: flex;
   justify-content: space-between;
-  padding: 10px 15px;
+  padding: 12px 15px;
   border-radius: 12px;
   background-color: #f8f9fa;
   margin-bottom: 10px;
@@ -74,44 +90,29 @@
   color: #333;
 }
 
-/* Password section */
-.password-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.toggle-password-btn {
-  background-color: #2575fc;
-  color: #fff;
-  border: none;
-  padding: 8px 20px;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.toggle-password-btn:hover {
-  background-color: #6a11cb;
-}
-
-/* Action Buttons */
+/* Actions Buttons */
 .profile-actions {
   display: flex;
-  justify-content: space-around;
-  margin-top: 20px;
+  justify-content: space-between;
+  gap: 15px;
+  width: 100%;
+  flex-wrap: wrap;
 }
 
 .calendar-btn,
+.password-btn,
 .logout-btn {
-  padding: 10px 25px;
+  flex: 1;
+  padding: 12px 20px;
   border-radius: 50px;
   border: none;
   cursor: pointer;
   font-weight: 500;
   transition: all 0.2s ease;
+  text-align: center;
 }
 
+/* Individual button styles */
 .calendar-btn {
   background-color: #28a745;
   color: white;
@@ -119,6 +120,15 @@
 
 .calendar-btn:hover {
   background-color: #218838;
+}
+
+.password-btn {
+  background-color: #2575fc;
+  color: white;
+}
+
+.password-btn:hover {
+  background-color: #6a11cb;
 }
 
 .logout-btn {
@@ -130,10 +140,40 @@
   background-color: #c82333;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+/* Responsive layout */
+@media (max-width: 480px) {
   .profile-actions {
     flex-direction: column;
-    gap: 15px;
   }
+}
+/* Full page gradient background */
+.profile-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center; /* horizontally center */
+  align-items: center;     /* vertically center */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Centered container with blur overlay */
+.profile-background {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* vertical centering within this container */
+  padding: 20px;
+}
+
+/* The rest remains same */
+.profile-container {
+  max-width: 600px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 25px;
+  padding: 40px 30px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
 }
