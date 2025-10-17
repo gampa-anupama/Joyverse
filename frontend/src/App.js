@@ -20,6 +20,9 @@ import Unauthorized from "./components/AccessDenied";
 import UpdatePassword from "./components/UpdatePassword";
 import VideoUploader from "./components/VideoUploader";
 import VideoPlayer from "./components/VideoPlayer";
+import Facevalidation from './components/FaceDetection';
+import Playgame from './components/play_game_button';
+
 const Main = () => {
   const location = useLocation();
   const [refreshVideo, setRefreshVideo] = useState(false);
@@ -67,6 +70,9 @@ const Main = () => {
           <Route path="/pending-requests" element={<ProtectedRoute allowedRoles={["super_admin"]}><PendingRequests/></ProtectedRoute>}/>
           <Route path="/unauthorized" element={<Unauthorized />} />
           <Route path="/analysis/update-password" element={<UpdatePassword />} />
+          <Route path="/facedetection" element={<UpdatePassword/>}/>
+          <Route path="/playgame" element={<Playgame/>}/>
+          <Route path="/Facevalidation" element={<Facevalidation/>}/>
           <Route
             path="/analysis/upload-video"
             element={
