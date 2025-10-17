@@ -334,16 +334,31 @@ const speak = (text) => {
   }
 };
 
-// Helper to convert emotion to RGB
+// Helper to convert emotion to RGB (aligned with Game 1)
 const emotionToColor = (emotion) => {
   const map = {
-    happy: [255, 255, 0], // yellow
-    sad: [0, 0, 255],     // blue
-    angry: [255, 0, 0],   // red
-    surprised: [0, 255, 0], // green
-    neutral: [255, 255, 255], // white
+    happy: [255, 255, 0],       // yellow
+    sad: [0, 0, 255],           // blue
+    angry: [255, 0, 0],         // red
+    fear: [128, 0, 128],        // purple
+    disgust: [0, 128, 0],       // dark green
+    surprise: [0, 255, 255],    // cyan
+    neutral: [255, 255, 255],   // white
+    calm: [173, 216, 230],      // light blue
+    confused: [255, 165, 0],    // orange
   };
-  return map[emotion] || [255, 255, 255];
+  const key = emotion?.toLowerCase().trim();
+  return map[key] || [255, 255, 255];
+};
+
+// Dim a color by blending toward white to reduce intensity
+const dimColor = (rgb, towardWhiteFactor = 0.6) => {
+  const clampFactor = Math.max(0, Math.min(1, towardWhiteFactor));
+  return [
+    Math.round(lerp(rgb[0], 255, clampFactor)),
+    Math.round(lerp(rgb[1], 255, clampFactor)),
+    Math.round(lerp(rgb[2], 255, clampFactor)),
+  ];
 };
 
 // Linear interpolation for smooth color change
@@ -394,21 +409,23 @@ const Game = ({ gameId }) => {
 
   // Animate background color
   useEffect(() => {
+    let animationFrameId;
     const animateBackground = () => {
       setCurrentColor((prevColor) => {
         const newColor = [
-          lerp(prevColor[0], targetColor[0], 0.05),
-          lerp(prevColor[1], targetColor[1], 0.05),
-          lerp(prevColor[2], targetColor[2], 0.05),
+          lerp(prevColor[0], targetColor[0], 0.04),
+          lerp(prevColor[1], targetColor[1], 0.04),
+          lerp(prevColor[2], targetColor[2], 0.04),
         ];
         document.body.style.backgroundColor = `rgb(${newColor
           .map((c) => Math.round(c))
           .join(",")})`;
         return newColor;
       });
-      requestAnimationFrame(animateBackground);
+      animationFrameId = requestAnimationFrame(animateBackground);
     };
-    requestAnimationFrame(animateBackground);
+    animationFrameId = requestAnimationFrame(animateBackground);
+    return () => cancelAnimationFrame(animationFrameId);
   }, [targetColor]);
 
   // Capture base64 for emotion analysis
@@ -431,7 +448,8 @@ const Game = ({ gameId }) => {
         { image: base64Image }
       );
       const emotion = response.data.emotion;
-      setTargetColor(emotionToColor(emotion));
+      const color = emotionToColor(emotion);
+      setTargetColor(dimColor(color, 0.3)); // increase intensity (less blend to white)
     } catch (err) {
       console.error("Emotion analysis failed:", err);
     }
@@ -446,7 +464,7 @@ const Game = ({ gameId }) => {
       captureImage(sessionId, username || `Child_${sessionId}`, gameName);
       captureScreenshot(sessionId, username || `Child_${sessionId}`, gameName);
       analyzeEmotion();
-    }, 10000); // every 10 seconds
+    }, 5000); // every 5 seconds, aligned with Game 1
 
     setIntervalId(id);
   };
