@@ -309,5 +309,17 @@ router.post("/add-video/:username", async (req, res) => {
   }
 });
   
+router.post("/api/analyze", async (req, res) => {
+  const { image } = req.body; // base64 string
+  try {
+    const result = await sendImageToModel(Buffer.from(image.split(",")[1], "base64"));
+    const emotion = result[0]?.label || "neutral"; // pick the first prediction
+    res.json({ emotion });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Failed to analyze emotion" });
+  }
+});
+
 
 module.exports = router;
